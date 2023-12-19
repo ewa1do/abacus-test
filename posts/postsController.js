@@ -1,4 +1,4 @@
-const { fetchJSONData, resStatus } = require('../utils/index.js')
+const { fetchJSONData, resStatus, generateCSV } = require('../utils/index.js')
 const { Repository } = require('./postsRepository.js')
 
 const getPosts = async (req, res, next) => {
@@ -23,6 +23,27 @@ const getPosts = async (req, res, next) => {
   })
 }
 
+const exportPosts = async (req, res) => {
+  const posts = await Repository.getPosts()
+
+  if (!posts.length) {
+    return res.status(400).json({
+      status: resStatus.ERROR,
+      message: 'There is no data in the DB, please fill it first',
+    })
+  }
+
+  await generateCSV(posts)
+
+  res.status(201).json({
+    status: resStatus.SUCCESS,
+    data: {
+      message: 'CSV File Successfully Created!',
+    },
+  })
+}
+
 module.exports = {
   getPosts,
+  exportPosts,
 }
