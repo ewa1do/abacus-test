@@ -1,14 +1,20 @@
 const express = require('express')
-const http = require('https')
+const compression = require('compression')
+const cors = require('cors')
+const postsRouter = require('./posts/router.js')
 
 const app = express()
 
-const PORT = 3000
+app.use(compression())
+app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use('/api/v1/posts', postsRouter)
 
-app.listen(PORT, () => {
-  console.log('Listening request on port: ', PORT)
-})
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+  }),
+)
+
+module.exports = app
