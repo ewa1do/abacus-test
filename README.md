@@ -60,7 +60,7 @@ the api is serve on: localhost:3000/api/v1/posts
 
 ```
 
-Note: The CSV files are created in a folder called _downloads_, if you did not see it don't worry, the first time you'll use the endpoint it will created automatically.
+Note: The CSV files are created in a folder called _downloads_, if you did not see it don't worry, the first time you'll use the endpoint it will be created automatically.
 
 <details>
     <summary>Descripción de la Tarea</summary>
