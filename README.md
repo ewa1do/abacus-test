@@ -39,8 +39,11 @@ You can also see the example.env for more info
 
 3. Once your Database is connected, install the necessary packages to run the project:
 
+```
 - npm install (to install the depedencies)
 - npm start (to run the server)
+
+```
 
 4. API ENDPOINTS
 
